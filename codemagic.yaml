@@ -4,7 +4,7 @@ workflows:
         environment:
             node: v16.18.0
             groups:
-              - API_URL
+              - api
         triggering:
             events:
                 - push

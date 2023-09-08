@@ -82,6 +82,12 @@ android {
         versionName "1.0"
     }
     signingConfigs {
+        release {
+            storeFile file('keystore.keystore')
+            storePassword 'codemagic'
+            keyAlias 'codemagic'
+            keyPassword 'codemagic'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'

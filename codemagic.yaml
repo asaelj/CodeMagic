@@ -1,0 +1,21 @@
+workflows:
+    react-native:
+        name: 'CodeMagic'
+        environment:
+            node: v16.18.0
+            groups:
+              - API_URL
+        triggering:
+            events:
+                - push
+                - tag
+                - pull_request
+        scripts:
+            - npm install
+            - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
+            - |
+                # build Android
+                cd android
+                ./gradlew assembleRelease
+        artifacts:
+            - android/app/build/outputs/**/*.apk
